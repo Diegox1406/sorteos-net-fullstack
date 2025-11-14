@@ -1,0 +1,18 @@
+# Carpetas de compilación
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# NuGet Packages
+**/packages/
+
+# Node (si tu frontend usa Node)
+node_modules/
+
+# Logs y temporales
+*.log
+*.tmp

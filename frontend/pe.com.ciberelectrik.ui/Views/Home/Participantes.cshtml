@@ -1,0 +1,38 @@
+﻿@model IEnumerable<pe.com.ciberelectrik.ui.Models.Participante>
+
+@{
+    ViewBag.Title = "Participantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="fas fa-users" style="color: #e74c3c; margin-right: 15px;"></i>Lista de Participantes</h2>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><i class="fas fa-user"></i> Nombre</th>
+                <th><i class="fas fa-phone"></i> Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>
+                        <span style="color: #2c3e50; font-weight: 500;">
+                            <i class="fas fa-user-circle" style="color: #e74c3c; margin-right: 10px;"></i>
+                            @p.Nombre
+                        </span>
+                    </td>
+                    <td>
+                        <span style="color: #667eea;">
+                            <i class="fas fa-mobile-alt" style="color: #27ae60; margin-right: 8px;"></i>
+                            @p.Telefono
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

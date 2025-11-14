@@ -1,0 +1,84 @@
+﻿@model IEnumerable<pe.com.ciberelectrik.ui.Models.Boleto>
+
+@{
+    ViewBag.Title = "Lista de Boletos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="fas fa-ticket-alt" style="color: #f39c12; margin-right: 15px;"></i>Lista de Boletos</h2>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><i class="fas fa-hashtag"></i> ID</th>
+                <th><i class="fas fa-barcode"></i> Código</th>
+                <th><i class="fas fa-info-circle"></i> Estado</th>
+                <th><i class="fas fa-calendar-plus"></i> Fecha de Apartado</th>
+                <th><i class="fas fa-calendar-check"></i> Fecha de Compra</th>
+                <th><i class="fas fa-cogs"></i> Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var boleto in Model)
+            {
+                <tr>
+                    <td><strong>@boleto.IdBoleto</strong></td>
+                    <td><code style="background: rgba(102, 126, 234, 0.1); padding: 5px 10px; border-radius: 8px; color: #667eea;">@boleto.CodigoBoleto</code></td>
+                    <td>
+                        @if (boleto.Comprado > 0)
+                        {
+                            <span class="estado-comprado">
+                                <i class="fas fa-check-circle"></i> Comprado
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="estado-disponible">
+                                <i class="fas fa-clock"></i> Disponible
+                            </span>
+                        }
+                    </td>
+                    <td>
+                        @if (boleto.FechaApartado.HasValue)
+                        {
+                            <span style="color: #667eea; font-weight: 500;">
+                                <i class="fas fa-calendar"></i> @boleto.FechaApartado?.ToString("dd/MM/yyyy")
+                            </span>
+                        }
+                        else
+                        {
+                            <span style="color: #95a5a6;">-</span>
+                        }
+                    </td>
+                    <td>
+                        @if (boleto.FechaCompra.HasValue)
+                        {
+                            <span style="color: #27ae60; font-weight: 500;">
+                                <i class="fas fa-calendar-check"></i> @boleto.FechaCompra?.ToString("dd/MM/yyyy")
+                            </span>
+                        }
+                        else
+                        {
+                            <span style="color: #95a5a6;">-</span>
+                        }
+                    </td>
+                    <td>
+                        @if (boleto.Comprado == 0)
+                        {
+                            <a href="@Url.Action("EditarBoleto", "Home", new { id = boleto.IdBoleto })" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i> Agregar Fecha Compra
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-muted" style="color: #95a5a6; font-style: italic;">
+                                <i class="fas fa-check"></i> Completado
+                            </span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Grupo Essential</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/Site.css?v=@DateTime.Now.Ticks" /> <!-- Añadido para forzar recarga -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-center mb-4" style="margin-top: 20px;">
+            <img src="https://grupoessential.com/wp-content/uploads/2021/04/Grupo-Essential.png" alt="Grupo Essential" style="height: 100px; margin-bottom: 15px;" />
+            <p>RUC: 20613362321</p>
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

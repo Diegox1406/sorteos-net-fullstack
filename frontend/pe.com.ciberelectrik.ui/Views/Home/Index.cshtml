@@ -1,0 +1,46 @@
+﻿@model List<pe.com.ciberelectrik.ui.Models.User>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="fas fa-tachometer-alt" style="color: #9b59b6; margin-right: 15px;"></i>Dashboard</h2>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><i class="fas fa-hashtag"></i> Id</th>
+                <th><i class="fas fa-user"></i> Nombre</th>
+                <th><i class="fas fa-envelope"></i> Email</th>
+                <th><i class="fas fa-user-circle"></i> Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td><strong>@user.Id</strong></td>
+                    <td>
+                        <span style="color: #2c3e50; font-weight: 500;">
+                            <i class="fas fa-user" style="color: #3498db; margin-right: 8px;"></i>
+                            @user.Name
+                        </span>
+                    </td>
+                    <td>
+                        <span style="color: #667eea;">
+                            <i class="fas fa-at" style="margin-right: 5px;"></i>
+                            @user.Email
+                        </span>
+                    </td>
+                    <td>
+                        <code style="background: rgba(155, 89, 182, 0.1); padding: 5px 10px; border-radius: 8px; color: #9b59b6;">
+                            @user.Username
+                        </code>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

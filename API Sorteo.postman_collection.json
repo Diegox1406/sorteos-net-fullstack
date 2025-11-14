@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "b264b852-8166-48ec-b0c9-4879a748b01e",
+		"name": "API Sorteo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45707536",
+		"_collection_link": "https://roger-2552277.postman.co/workspace/Roger's-Workspace~acec3763-2ea7-46f7-8082-ce94bf07f03c/collection/45707536-b264b852-8166-48ec-b0c9-4879a748b01e?action=share&source=collection_link&creator=45707536"
+	},
+	"item": [
+		{
+			"name": "Boleto",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CodigoBoleto\": \"00008\",\r\n  \"FechaApartado\": \"2025-07-15T14:30:00\",\r\n  \"FechaCompra\": \"2025-07-16T10:00:00\",\r\n  \"Comprado\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"IdBoleto\": 1,\r\n  \"CodigoBoleto\": \"00007\",\r\n  \"FechaCompra\": \"2025-07-18T15:00:00\",\r\n  \"Comprado\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto/delete/9",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto",
+								"delete",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enable",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/boleto/enable/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"boleto",
+								"enable",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Name\": \"Juan Perez\",\r\n  \"Email\": \"juan.perez@example.com\",\r\n  \"Username\": \"juanp\",\r\n  \"Password\": \"miClaveSegura123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/users/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": 2,\r\n  \"Name\": \"Juan Pérez Gómez xD\",\r\n  \"Email\": \"juan.perez@example.com\",\r\n  \"Username\": \"juanp\",\r\n  \"Password\": \"nuevaClave456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/users/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/users/delete/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"users",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apartados",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/apartados",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"apartados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/apartados/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"apartados",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"boleto\": 15,\r\n  \"fechaapartados\": \"2025-07-15T10:00:00\",\r\n  \"boletoId\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/apartados/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"apartados",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idApartados\": 1,\r\n  \"boleto\": 7,\r\n  \"fechaApartados\": \"2025-07-16T10:00:00\",\r\n  \"boletoId\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/apartados/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"apartados",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/apartados/delete/14",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"apartados",
+								"delete",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Participantes",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/participantes/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"participantes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/participantes/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"participantes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Juan Pérez\",\r\n  \"telefono\": \"555-1234567\",\r\n  \"userId\": 1,\r\n  \"boletoId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/participantes/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"participantes",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idParticipante\": 3,\r\n  \"nombre\": \"Juan Pérez Actualizado xDD\",\r\n  \"telefono\": \"555-123123\",\r\n  \"userId\": 1,\r\n  \"boletoId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44346/api-sorteo/participantes/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"api-sorteo",
+								"participantes",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44346//api-sorteo/participantes/delete/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44346",
+							"path": [
+								"",
+								"api-sorteo",
+								"participantes",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

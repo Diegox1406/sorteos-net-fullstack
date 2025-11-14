@@ -1,0 +1,80 @@
+﻿@model IEnumerable<pe.com.ciberelectrik.ui.Models.Boleto>
+
+@{
+    ViewBag.Title = "Boletos Disponibles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Selecciona tus boletos</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+else
+{
+    <div class="row" id="boletos-container">
+        @foreach (var boleto in Model)
+        {
+            <div class="col-md-2 col-sm-3 col-xs-4 mb-3">
+                <button type="button"
+                        class="btn btn-outline-primary btn-lg btn-block boleto-btn"
+                        data-id="@boleto.IdBoleto"
+                        style="height: 80px; width: 100%; margin: 5px; border: 2px dashed #007bff; border-radius: 10px; font-size: 1.2em;">
+                    @boleto.CodigoBoleto
+                </button>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <div id="resumen" style="display: none;">
+        <h4>Boletos seleccionados: <span id="contador">0</span></h4>
+        <p>
+            <strong>Códigos:</strong> <span id="boletos-codigos"></span>
+        </p>
+
+        <form id="form-apartar" method="post" action="@Url.Action("Apartar", "Boleto")">
+            <input type="hidden" name="idsSeleccionados" id="idsSeleccionados" />
+            <button type="submit" class="btn btn-success">APARTAR</button>
+        </form>
+    </div>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let boletosSeleccionados = [];
+
+        $(document).ready(function () {
+            $('.boleto-btn').click(function () {
+                const boton = $(this);
+                const id = boton.data('id');
+                const codigo = boton.text().trim();
+
+                // Alternar selección
+                if (boletosSeleccionados.some(x => x.id === id)) {
+                    boletosSeleccionados = boletosSeleccionados.filter(x => x.id !== id);
+                    boton.removeClass('btn-primary').addClass('btn-outline-primary');
+                } else {
+                    boletosSeleccionados.push({ id, codigo });
+                    boton.removeClass('btn-outline-primary').addClass('btn-primary');
+                }
+
+                // Actualizar UI
+                if (boletosSeleccionados.length > 0) {
+                    $('#resumen').show();
+                    $('#contador').text(boletosSeleccionados.length);
+                    $('#boletos-codigos').text(boletosSeleccionados.map(x => x.codigo).join(", "));
+                    $('#idsSeleccionados').val(boletosSeleccionados.map(x => x.id).join(","));
+                } else {
+                    $('#resumen').hide();
+                    $('#contador').text(0);
+                    $('#boletos-codigos').text('');
+                    $('#idsSeleccionados').val('');
+                }
+            });
+        });
+    </script>
+}

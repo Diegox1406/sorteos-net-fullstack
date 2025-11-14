@@ -1,0 +1,70 @@
+﻿@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString().ToLower();
+    var currentUrl = Request.RawUrl.ToLower();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Grupo Essential</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/Site.css?v=@DateTime.Now.Ticks" /> <!-- Añadido para forzar recarga -->
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                <img src="https://grupoessential.com/wp-content/uploads/2021/04/Grupo-Essential.png" alt="Grupo Essential" style="height: 40px;" />
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+
+                    @* Mostrar enlaces solo cuando estás en el controlador "home" *@
+                    @if (currentController == "home")
+                    {
+                        <li>@Html.ActionLink("Usuarios", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li><a href="@Url.Action("Participantes", "Home")" class="nav-link"><i class="fas fa-users"></i> Participantes</a></li>
+                        <li><a href="@Url.Action("Boletos", "Home")" class="nav-link"><i class="fas fa-ticket-alt"></i> Boletos</a></li>
+                        <li><a href="/boleto" class="nav-link"><i class="fas fa-store"></i> Visitar Sitio</a></li>
+                        <li class="nav-item">
+                            <form id="logoutForm" action="@Url.Action("Logout", "Account")" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link" style="cursor:pointer;">
+                                    Cerrar sesión
+                                </a>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        @* Mostrar solo estos dos enlaces en otros controladores *@
+                        <li><a href="/boleto" class="nav-link"><i class="fas fa-ticket-alt"></i> Boletos</a></li>
+                        <li><a href="/home" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container ">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Grupo Essential - RUC: 20613362321 - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

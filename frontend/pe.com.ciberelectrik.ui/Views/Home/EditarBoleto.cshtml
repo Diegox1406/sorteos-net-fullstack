@@ -1,0 +1,29 @@
+﻿@model pe.com.ciberelectrik.ui.Models.Boleto
+
+@{
+    ViewBag.Title = "Editar Boleto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Fecha de Compra</h2>
+
+@using (Html.BeginForm("EditarBoleto", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.IdBoleto)
+    @Html.HiddenFor(model => model.CodigoBoleto)
+
+    <div class="form-group">
+        <label>Código del Boleto</label>
+        <input type="text" class="form-control" value="@Model.CodigoBoleto" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Compra</label>
+        <input type="date" name="FechaCompra" class="form-control" value="@Model.FechaCompra?.ToString(" yyyy-MM-dd")" required />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="@Url.Action("Boletos", "Home")" class="btn btn-secondary">Cancelar</a>
+}
